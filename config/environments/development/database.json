@@ -1,0 +1,19 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-mongoose",
+      "settings": {
+        "client": "mongo",
+        "host": "ds115671.mlab.com",
+        "port": "15671",
+        "database": "yppapi",
+        "username": "toro",
+        "password": "1U3ViABF55uc7E"
+      },
+      "options": {
+        "authenticationDatabase": "yppapi"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "endpoint",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "script": {
+      "model": "script",
+      "via": "endpoint"
+    },
+    "machines": {
+      "collection": "machine",
+      "dominant": true,
+      "via": "endpoints"
+    },
+    "configs": {
+      "collection": "config",
+      "via": "endpoints"
+    }
+  }
+}

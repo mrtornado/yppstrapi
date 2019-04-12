@@ -1,0 +1,73 @@
+{
+  "connection": "default",
+  "collectionName": "config",
+  "info": {
+    "name": "config",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "isenabled": {
+      "default": true,
+      "type": "boolean",
+      "required": true
+    },
+    "isvisible": {
+      "default": true,
+      "type": "boolean",
+      "required": true
+    },
+    "endpoints": {
+      "collection": "endpoint",
+      "via": "configs",
+      "dominant": true
+    },
+    "proxyauth": {
+      "default": "strong",
+      "type": "string",
+      "required": true
+    },
+    "port": {
+      "default": "",
+      "type": "integer",
+      "required": true
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "ipallowed": {
+      "default": 5,
+      "type": "integer",
+      "required": true
+    },
+    "connlimit": {
+      "default": 100,
+      "type": "integer",
+      "required": true
+    },
+    "proxyfile": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "configs",
+      "plugin": "users-permissions"
+    },
+    "locations": {
+      "collection": "location",
+      "via": "configs",
+      "dominant": true
+    }
+  }
+}

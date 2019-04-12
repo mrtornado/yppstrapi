@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "cblock",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "machine": {
+      "model": "machine",
+      "via": "cblock"
+    },
+    "location": {
+      "model": "location",
+      "via": "cblock"
+    },
+    "ips": {
+      "collection": "ip",
+      "via": "cblock"
+    }
+  }
+}

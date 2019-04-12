@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/futures",
+      "handler": "Future.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/futures/count",
+      "handler": "Future.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/futures/:_id",
+      "handler": "Future.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/futures",
+      "handler": "Future.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/futures/:_id",
+      "handler": "Future.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/futures/:_id",
+      "handler": "Future.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

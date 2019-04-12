@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "future",
+  "info": {
+    "name": "future",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "default": "",
+      "type": "text",
+      "required": true
+    }
+  }
+}

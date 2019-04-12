@@ -1,0 +1,66 @@
+{
+  "connection": "default",
+  "collectionName": "product",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "iptype": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "ipprotocol": {
+      "default": "HTTPS or SOCKS5",
+      "type": "string",
+      "required": true
+    },
+    "ipallocation": {
+      "default": "Non Sequential",
+      "type": "string",
+      "required": true
+    },
+    "threads": {
+      "default": "20 per IP",
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "default": "",
+      "type": "decimal",
+      "required": true
+    },
+    "controlpanel": {
+      "default": "Yes",
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "default": "",
+      "type": "integer",
+      "required": true
+    },
+    "plansetup": {
+      "default": "Instant",
+      "type": "string",
+      "required": true
+    },
+    "productcats": {
+      "collection": "productcat",
+      "via": "products"
+    },
+    "link": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

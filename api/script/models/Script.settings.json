@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "script",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "template": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "endpoint": {
+      "model": "endpoint",
+      "via": "script"
+    }
+  }
+}

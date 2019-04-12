@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "machine",
+  "info": {
+    "name": "machine",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "band": {
+      "default": "",
+      "type": "integer",
+      "required": true
+    },
+    "type": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "endpoints": {
+      "collection": "endpoint",
+      "via": "machines"
+    },
+    "cblock": {
+      "model": "cblock",
+      "via": "machine"
+    },
+    "ipaddress": {
+      "default": "",
+      "type": "string",
+      "required": true
+    }
+  }
+}

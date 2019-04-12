@@ -1,0 +1,46 @@
+{
+  "connection": "default",
+  "collectionName": "article",
+  "info": {
+    "name": "article",
+    "description": "Blog Articles"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "model": "user",
+      "via": "articles",
+      "plugin": "users-permissions"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "link": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "keywords": {
+      "default": "",
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cblocks",
+      "handler": "Cblock.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cblocks/count",
+      "handler": "Cblock.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cblocks/:_id",
+      "handler": "Cblock.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cblocks",
+      "handler": "Cblock.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cblocks/:_id",
+      "handler": "Cblock.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cblocks/:_id",
+      "handler": "Cblock.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "connection": "default",
+  "collectionName": "ip",
+  "info": {
+    "name": "ip",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "ipstart": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "ipend": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "cblock": {
+      "model": "cblock",
+      "via": "ips"
+    },
+    "addr": {
+      "default": "",
+      "type": "string",
+      "required": true
+    }
+  }
+}

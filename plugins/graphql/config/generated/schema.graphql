@@ -1,0 +1,1724 @@
+"""Blog Articles"""
+type Article {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  content: String!
+  author: UsersPermissionsUser
+  image: UploadFile
+  link: String!
+  keywords: String!
+}
+
+type ArticleAggregator {
+  count: Int
+}
+
+type ArticleConnection {
+  values: [Article]
+  groupBy: ArticleGroupBy
+  aggregate: ArticleAggregator
+}
+
+type ArticleConnection_id {
+  key: ID
+  connection: ArticleConnection
+}
+
+type ArticleConnectionAuthor {
+  key: ID
+  connection: ArticleConnection
+}
+
+type ArticleConnectionContent {
+  key: String
+  connection: ArticleConnection
+}
+
+type ArticleConnectionCreatedAt {
+  key: DateTime
+  connection: ArticleConnection
+}
+
+type ArticleConnectionImage {
+  key: ID
+  connection: ArticleConnection
+}
+
+type ArticleConnectionKeywords {
+  key: String
+  connection: ArticleConnection
+}
+
+type ArticleConnectionLink {
+  key: String
+  connection: ArticleConnection
+}
+
+type ArticleConnectionTitle {
+  key: String
+  connection: ArticleConnection
+}
+
+type ArticleConnectionUpdatedAt {
+  key: DateTime
+  connection: ArticleConnection
+}
+
+type ArticleGroupBy {
+  _id: [ArticleConnection_id]
+  createdAt: [ArticleConnectionCreatedAt]
+  updatedAt: [ArticleConnectionUpdatedAt]
+  title: [ArticleConnectionTitle]
+  content: [ArticleConnectionContent]
+  author: [ArticleConnectionAuthor]
+  image: [ArticleConnectionImage]
+  link: [ArticleConnectionLink]
+  keywords: [ArticleConnectionKeywords]
+}
+
+input ArticleInput {
+  title: String!
+  content: String!
+  author: ID
+  image: ID
+  link: String!
+  keywords: String!
+}
+
+type Cblock {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  type: String!
+  machine: Machine
+  location: Location
+  ips(sort: String, limit: Int, start: Int, where: JSON): [Ip]
+}
+
+type CblockAggregator {
+  count: Int
+}
+
+type CblockConnection {
+  values: [Cblock]
+  groupBy: CblockGroupBy
+  aggregate: CblockAggregator
+}
+
+type CblockConnection_id {
+  key: ID
+  connection: CblockConnection
+}
+
+type CblockConnectionCreatedAt {
+  key: DateTime
+  connection: CblockConnection
+}
+
+type CblockConnectionLocation {
+  key: ID
+  connection: CblockConnection
+}
+
+type CblockConnectionMachine {
+  key: ID
+  connection: CblockConnection
+}
+
+type CblockConnectionName {
+  key: String
+  connection: CblockConnection
+}
+
+type CblockConnectionType {
+  key: String
+  connection: CblockConnection
+}
+
+type CblockConnectionUpdatedAt {
+  key: DateTime
+  connection: CblockConnection
+}
+
+type CblockGroupBy {
+  _id: [CblockConnection_id]
+  createdAt: [CblockConnectionCreatedAt]
+  updatedAt: [CblockConnectionUpdatedAt]
+  name: [CblockConnectionName]
+  type: [CblockConnectionType]
+  machine: [CblockConnectionMachine]
+  location: [CblockConnectionLocation]
+}
+
+input CblockInput {
+  name: String!
+  type: String!
+  machine: ID
+  location: ID
+  ips: [ID]
+}
+
+type Config {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  isenabled: Boolean!
+  isvisible: Boolean!
+  proxyauth: String!
+  port: Int!
+  description: String
+  ipallowed: Int!
+  connlimit: Int!
+  proxyfile: String!
+  user: UsersPermissionsUser
+  endpoints(sort: String, limit: Int, start: Int, where: JSON): [Endpoint]
+  locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
+}
+
+type ConfigAggregator {
+  count: Int
+}
+
+type ConfigConnection {
+  values: [Config]
+  groupBy: ConfigGroupBy
+  aggregate: ConfigAggregator
+}
+
+type ConfigConnection_id {
+  key: ID
+  connection: ConfigConnection
+}
+
+type ConfigConnectionConnlimit {
+  key: Int
+  connection: ConfigConnection
+}
+
+type ConfigConnectionCreatedAt {
+  key: DateTime
+  connection: ConfigConnection
+}
+
+type ConfigConnectionDescription {
+  key: String
+  connection: ConfigConnection
+}
+
+type ConfigConnectionIpallowed {
+  key: Int
+  connection: ConfigConnection
+}
+
+type ConfigConnectionIsenabled {
+  key: Boolean
+  connection: ConfigConnection
+}
+
+type ConfigConnectionIsvisible {
+  key: Boolean
+  connection: ConfigConnection
+}
+
+type ConfigConnectionName {
+  key: String
+  connection: ConfigConnection
+}
+
+type ConfigConnectionPort {
+  key: Int
+  connection: ConfigConnection
+}
+
+type ConfigConnectionProxyauth {
+  key: String
+  connection: ConfigConnection
+}
+
+type ConfigConnectionProxyfile {
+  key: String
+  connection: ConfigConnection
+}
+
+type ConfigConnectionUpdatedAt {
+  key: DateTime
+  connection: ConfigConnection
+}
+
+type ConfigConnectionUser {
+  key: ID
+  connection: ConfigConnection
+}
+
+type ConfigGroupBy {
+  _id: [ConfigConnection_id]
+  createdAt: [ConfigConnectionCreatedAt]
+  updatedAt: [ConfigConnectionUpdatedAt]
+  name: [ConfigConnectionName]
+  isenabled: [ConfigConnectionIsenabled]
+  isvisible: [ConfigConnectionIsvisible]
+  proxyauth: [ConfigConnectionProxyauth]
+  port: [ConfigConnectionPort]
+  description: [ConfigConnectionDescription]
+  ipallowed: [ConfigConnectionIpallowed]
+  connlimit: [ConfigConnectionConnlimit]
+  proxyfile: [ConfigConnectionProxyfile]
+  user: [ConfigConnectionUser]
+}
+
+input ConfigInput {
+  name: String!
+  isenabled: Boolean!
+  isvisible: Boolean!
+  endpoints: [ID]
+  proxyauth: String!
+  port: Int!
+  description: String
+  ipallowed: Int!
+  connlimit: Int!
+  proxyfile: String!
+  user: ID
+  locations: [ID]
+}
+
+input createArticleInput {
+  data: ArticleInput
+}
+
+type createArticlePayload {
+  article: Article
+}
+
+input createCblockInput {
+  data: CblockInput
+}
+
+type createCblockPayload {
+  cblock: Cblock
+}
+
+input createConfigInput {
+  data: ConfigInput
+}
+
+type createConfigPayload {
+  config: Config
+}
+
+input createEndpointInput {
+  data: EndpointInput
+}
+
+type createEndpointPayload {
+  endpoint: Endpoint
+}
+
+input createFutureInput {
+  data: FutureInput
+}
+
+type createFuturePayload {
+  future: Future
+}
+
+input createIpInput {
+  data: IpInput
+}
+
+type createIpPayload {
+  ip: Ip
+}
+
+input createLocationInput {
+  data: LocationInput
+}
+
+type createLocationPayload {
+  location: Location
+}
+
+input createMachineInput {
+  data: MachineInput
+}
+
+type createMachinePayload {
+  machine: Machine
+}
+
+input createProductcatInput {
+  data: ProductcatInput
+}
+
+type createProductcatPayload {
+  productcat: Productcat
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Product
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createScriptInput {
+  data: ScriptInput
+}
+
+type createScriptPayload {
+  script: Script
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+input deleteArticleInput {
+  where: InputID
+}
+
+type deleteArticlePayload {
+  article: Article
+}
+
+input deleteCblockInput {
+  where: InputID
+}
+
+type deleteCblockPayload {
+  cblock: Cblock
+}
+
+input deleteConfigInput {
+  where: InputID
+}
+
+type deleteConfigPayload {
+  config: Config
+}
+
+input deleteEndpointInput {
+  where: InputID
+}
+
+type deleteEndpointPayload {
+  endpoint: Endpoint
+}
+
+input deleteFutureInput {
+  where: InputID
+}
+
+type deleteFuturePayload {
+  future: Future
+}
+
+input deleteIpInput {
+  where: InputID
+}
+
+type deleteIpPayload {
+  ip: Ip
+}
+
+input deleteLocationInput {
+  where: InputID
+}
+
+type deleteLocationPayload {
+  location: Location
+}
+
+input deleteMachineInput {
+  where: InputID
+}
+
+type deleteMachinePayload {
+  machine: Machine
+}
+
+input deleteProductcatInput {
+  where: InputID
+}
+
+type deleteProductcatPayload {
+  productcat: Productcat
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Product
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteScriptInput {
+  where: InputID
+}
+
+type deleteScriptPayload {
+  script: Script
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editArticleInput {
+  title: String
+  content: String
+  author: ID
+  image: ID
+  link: String
+  keywords: String
+}
+
+input editCblockInput {
+  name: String
+  type: String
+  machine: ID
+  location: ID
+  ips: [ID]
+}
+
+input editConfigInput {
+  name: String
+  isenabled: Boolean
+  isvisible: Boolean
+  endpoints: [ID]
+  proxyauth: String
+  port: Int
+  description: String
+  ipallowed: Int
+  connlimit: Int
+  proxyfile: String
+  user: ID
+  locations: [ID]
+}
+
+input editEndpointInput {
+  name: String
+  url: String
+  script: ID
+  machines: [ID]
+  configs: [ID]
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: String
+  url: String
+  provider: String
+  public_id: String
+  related: [ID]
+}
+
+input editFutureInput {
+  title: String
+  content: String
+}
+
+input editIpInput {
+  ipstart: String
+  ipend: String
+  cblock: ID
+  addr: String
+}
+
+input editLocationInput {
+  city: String
+  country: String
+  cblock: ID
+  configs: [ID]
+}
+
+input editMachineInput {
+  name: String
+  band: Int
+  type: String
+  endpoints: [ID]
+  cblock: ID
+  ipaddress: String
+}
+
+input editProductcatInput {
+  category: String
+  products: [ID]
+}
+
+input editProductInput {
+  name: String
+  iptype: String
+  ipprotocol: String
+  ipallocation: String
+  threads: String
+  price: Float
+  controlpanel: String
+  number: Int
+  plansetup: String
+  productcats: [ID]
+  link: String
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editScriptInput {
+  name: String
+  template: String
+  endpoint: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  articles: [ID]
+  name: String
+  configs: [ID]
+}
+
+type Endpoint {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  url: String!
+  script: Script
+  machines(sort: String, limit: Int, start: Int, where: JSON): [Machine]
+  configs(sort: String, limit: Int, start: Int, where: JSON): [Config]
+}
+
+type EndpointAggregator {
+  count: Int
+}
+
+type EndpointConnection {
+  values: [Endpoint]
+  groupBy: EndpointGroupBy
+  aggregate: EndpointAggregator
+}
+
+type EndpointConnection_id {
+  key: ID
+  connection: EndpointConnection
+}
+
+type EndpointConnectionCreatedAt {
+  key: DateTime
+  connection: EndpointConnection
+}
+
+type EndpointConnectionName {
+  key: String
+  connection: EndpointConnection
+}
+
+type EndpointConnectionScript {
+  key: ID
+  connection: EndpointConnection
+}
+
+type EndpointConnectionUpdatedAt {
+  key: DateTime
+  connection: EndpointConnection
+}
+
+type EndpointConnectionUrl {
+  key: String
+  connection: EndpointConnection
+}
+
+type EndpointGroupBy {
+  _id: [EndpointConnection_id]
+  createdAt: [EndpointConnectionCreatedAt]
+  updatedAt: [EndpointConnectionUpdatedAt]
+  name: [EndpointConnectionName]
+  url: [EndpointConnectionUrl]
+  script: [EndpointConnectionScript]
+}
+
+input EndpointInput {
+  name: String!
+  url: String!
+  script: ID
+  machines: [ID]
+  configs: [ID]
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related: [ID]
+}
+
+type Future {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  content: String!
+}
+
+type FutureAggregator {
+  count: Int
+}
+
+type FutureConnection {
+  values: [Future]
+  groupBy: FutureGroupBy
+  aggregate: FutureAggregator
+}
+
+type FutureConnection_id {
+  key: ID
+  connection: FutureConnection
+}
+
+type FutureConnectionContent {
+  key: String
+  connection: FutureConnection
+}
+
+type FutureConnectionCreatedAt {
+  key: DateTime
+  connection: FutureConnection
+}
+
+type FutureConnectionTitle {
+  key: String
+  connection: FutureConnection
+}
+
+type FutureConnectionUpdatedAt {
+  key: DateTime
+  connection: FutureConnection
+}
+
+type FutureGroupBy {
+  _id: [FutureConnection_id]
+  createdAt: [FutureConnectionCreatedAt]
+  updatedAt: [FutureConnectionUpdatedAt]
+  title: [FutureConnectionTitle]
+  content: [FutureConnectionContent]
+}
+
+input FutureInput {
+  title: String!
+  content: String!
+}
+
+input InputID {
+  id: ID!
+}
+
+type Ip {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  ipstart: String!
+  ipend: String!
+  cblock: Cblock
+  addr: String!
+}
+
+type IpAggregator {
+  count: Int
+}
+
+type IpConnection {
+  values: [Ip]
+  groupBy: IpGroupBy
+  aggregate: IpAggregator
+}
+
+type IpConnection_id {
+  key: ID
+  connection: IpConnection
+}
+
+type IpConnectionAddr {
+  key: String
+  connection: IpConnection
+}
+
+type IpConnectionCblock {
+  key: ID
+  connection: IpConnection
+}
+
+type IpConnectionCreatedAt {
+  key: DateTime
+  connection: IpConnection
+}
+
+type IpConnectionIpend {
+  key: String
+  connection: IpConnection
+}
+
+type IpConnectionIpstart {
+  key: String
+  connection: IpConnection
+}
+
+type IpConnectionUpdatedAt {
+  key: DateTime
+  connection: IpConnection
+}
+
+type IpGroupBy {
+  _id: [IpConnection_id]
+  createdAt: [IpConnectionCreatedAt]
+  updatedAt: [IpConnectionUpdatedAt]
+  ipstart: [IpConnectionIpstart]
+  ipend: [IpConnectionIpend]
+  cblock: [IpConnectionCblock]
+  addr: [IpConnectionAddr]
+}
+
+input IpInput {
+  ipstart: String!
+  ipend: String!
+  cblock: ID
+  addr: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Location {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  city: String!
+  country: String!
+  cblock: Cblock
+  configs(sort: String, limit: Int, start: Int, where: JSON): [Config]
+}
+
+type LocationAggregator {
+  count: Int
+}
+
+type LocationConnection {
+  values: [Location]
+  groupBy: LocationGroupBy
+  aggregate: LocationAggregator
+}
+
+type LocationConnection_id {
+  key: ID
+  connection: LocationConnection
+}
+
+type LocationConnectionCblock {
+  key: ID
+  connection: LocationConnection
+}
+
+type LocationConnectionCity {
+  key: String
+  connection: LocationConnection
+}
+
+type LocationConnectionCountry {
+  key: String
+  connection: LocationConnection
+}
+
+type LocationConnectionCreatedAt {
+  key: DateTime
+  connection: LocationConnection
+}
+
+type LocationConnectionUpdatedAt {
+  key: DateTime
+  connection: LocationConnection
+}
+
+type LocationGroupBy {
+  _id: [LocationConnection_id]
+  createdAt: [LocationConnectionCreatedAt]
+  updatedAt: [LocationConnectionUpdatedAt]
+  city: [LocationConnectionCity]
+  country: [LocationConnectionCountry]
+  cblock: [LocationConnectionCblock]
+}
+
+input LocationInput {
+  city: String!
+  country: String!
+  cblock: ID
+  configs: [ID]
+}
+
+type Machine {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  band: Int!
+  type: String!
+  cblock: Cblock
+  ipaddress: String!
+  endpoints(sort: String, limit: Int, start: Int, where: JSON): [Endpoint]
+}
+
+type MachineAggregator {
+  count: Int
+}
+
+type MachineConnection {
+  values: [Machine]
+  groupBy: MachineGroupBy
+  aggregate: MachineAggregator
+}
+
+type MachineConnection_id {
+  key: ID
+  connection: MachineConnection
+}
+
+type MachineConnectionBand {
+  key: Int
+  connection: MachineConnection
+}
+
+type MachineConnectionCblock {
+  key: ID
+  connection: MachineConnection
+}
+
+type MachineConnectionCreatedAt {
+  key: DateTime
+  connection: MachineConnection
+}
+
+type MachineConnectionIpaddress {
+  key: String
+  connection: MachineConnection
+}
+
+type MachineConnectionName {
+  key: String
+  connection: MachineConnection
+}
+
+type MachineConnectionType {
+  key: String
+  connection: MachineConnection
+}
+
+type MachineConnectionUpdatedAt {
+  key: DateTime
+  connection: MachineConnection
+}
+
+type MachineGroupBy {
+  _id: [MachineConnection_id]
+  createdAt: [MachineConnectionCreatedAt]
+  updatedAt: [MachineConnectionUpdatedAt]
+  name: [MachineConnectionName]
+  band: [MachineConnectionBand]
+  type: [MachineConnectionType]
+  cblock: [MachineConnectionCblock]
+  ipaddress: [MachineConnectionIpaddress]
+}
+
+input MachineInput {
+  name: String!
+  band: Int!
+  type: String!
+  endpoints: [ID]
+  cblock: ID
+  ipaddress: String!
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Article | createArticlePayload | updateArticlePayload | deleteArticlePayload | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnection_id | ArticleConnectionCreatedAt | ArticleConnectionUpdatedAt | ArticleConnectionTitle | ArticleConnectionContent | ArticleConnectionAuthor | ArticleConnectionImage | ArticleConnectionLink | ArticleConnectionKeywords | Cblock | createCblockPayload | updateCblockPayload | deleteCblockPayload | CblockConnection | CblockAggregator | CblockGroupBy | CblockConnection_id | CblockConnectionCreatedAt | CblockConnectionUpdatedAt | CblockConnectionName | CblockConnectionType | CblockConnectionMachine | CblockConnectionLocation | Config | createConfigPayload | updateConfigPayload | deleteConfigPayload | ConfigConnection | ConfigAggregator | ConfigGroupBy | ConfigConnection_id | ConfigConnectionCreatedAt | ConfigConnectionUpdatedAt | ConfigConnectionName | ConfigConnectionIsenabled | ConfigConnectionIsvisible | ConfigConnectionProxyauth | ConfigConnectionPort | ConfigConnectionDescription | ConfigConnectionIpallowed | ConfigConnectionConnlimit | ConfigConnectionProxyfile | ConfigConnectionUser | Endpoint | createEndpointPayload | updateEndpointPayload | deleteEndpointPayload | EndpointConnection | EndpointAggregator | EndpointGroupBy | EndpointConnection_id | EndpointConnectionCreatedAt | EndpointConnectionUpdatedAt | EndpointConnectionName | EndpointConnectionUrl | EndpointConnectionScript | Future | createFuturePayload | updateFuturePayload | deleteFuturePayload | FutureConnection | FutureAggregator | FutureGroupBy | FutureConnection_id | FutureConnectionCreatedAt | FutureConnectionUpdatedAt | FutureConnectionTitle | FutureConnectionContent | Ip | createIpPayload | updateIpPayload | deleteIpPayload | IpConnection | IpAggregator | IpGroupBy | IpConnection_id | IpConnectionCreatedAt | IpConnectionUpdatedAt | IpConnectionIpstart | IpConnectionIpend | IpConnectionCblock | IpConnectionAddr | Location | createLocationPayload | updateLocationPayload | deleteLocationPayload | LocationConnection | LocationAggregator | LocationGroupBy | LocationConnection_id | LocationConnectionCreatedAt | LocationConnectionUpdatedAt | LocationConnectionCity | LocationConnectionCountry | LocationConnectionCblock | Machine | createMachinePayload | updateMachinePayload | deleteMachinePayload | MachineConnection | MachineAggregator | MachineGroupBy | MachineConnection_id | MachineConnectionCreatedAt | MachineConnectionUpdatedAt | MachineConnectionName | MachineConnectionBand | MachineConnectionType | MachineConnectionCblock | MachineConnectionIpaddress | Product | createProductPayload | updateProductPayload | deleteProductPayload | ProductConnection | ProductAggregator | ProductGroupBy | ProductConnection_id | ProductConnectionCreatedAt | ProductConnectionUpdatedAt | ProductConnectionName | ProductConnectionIptype | ProductConnectionIpprotocol | ProductConnectionIpallocation | ProductConnectionThreads | ProductConnectionPrice | ProductConnectionControlpanel | ProductConnectionNumber | ProductConnectionPlansetup | ProductConnectionLink | Productcat | createProductcatPayload | updateProductcatPayload | deleteProductcatPayload | ProductcatConnection | ProductcatAggregator | ProductcatGroupBy | ProductcatConnection_id | ProductcatConnectionCreatedAt | ProductcatConnectionUpdatedAt | ProductcatConnectionCategory | Script | createScriptPayload | updateScriptPayload | deleteScriptPayload | ScriptConnection | ScriptAggregator | ScriptGroupBy | ScriptConnection_id | ScriptConnectionCreatedAt | ScriptConnectionUpdatedAt | ScriptConnectionName | ScriptConnectionTemplate | ScriptConnectionEndpoint | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionName
+
+type Mutation {
+  createArticle(input: createArticleInput): createArticlePayload
+  updateArticle(input: updateArticleInput): updateArticlePayload
+  deleteArticle(input: deleteArticleInput): deleteArticlePayload
+  createCblock(input: createCblockInput): createCblockPayload
+  updateCblock(input: updateCblockInput): updateCblockPayload
+  deleteCblock(input: deleteCblockInput): deleteCblockPayload
+  createConfig(input: createConfigInput): createConfigPayload
+  updateConfig(input: updateConfigInput): updateConfigPayload
+  deleteConfig(input: deleteConfigInput): deleteConfigPayload
+  createEndpoint(input: createEndpointInput): createEndpointPayload
+  updateEndpoint(input: updateEndpointInput): updateEndpointPayload
+  deleteEndpoint(input: deleteEndpointInput): deleteEndpointPayload
+  createFuture(input: createFutureInput): createFuturePayload
+  updateFuture(input: updateFutureInput): updateFuturePayload
+  deleteFuture(input: deleteFutureInput): deleteFuturePayload
+  createIp(input: createIpInput): createIpPayload
+  updateIp(input: updateIpInput): updateIpPayload
+  deleteIp(input: deleteIpInput): deleteIpPayload
+  createLocation(input: createLocationInput): createLocationPayload
+  updateLocation(input: updateLocationInput): updateLocationPayload
+  deleteLocation(input: deleteLocationInput): deleteLocationPayload
+  createMachine(input: createMachineInput): createMachinePayload
+  updateMachine(input: updateMachineInput): updateMachinePayload
+  deleteMachine(input: deleteMachineInput): deleteMachinePayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createProductcat(input: createProductcatInput): createProductcatPayload
+  updateProductcat(input: updateProductcatInput): updateProductcatPayload
+  deleteProductcat(input: deleteProductcatInput): deleteProductcatPayload
+  createScript(input: createScriptInput): createScriptPayload
+  updateScript(input: updateScriptInput): updateScriptPayload
+  deleteScript(input: deleteScriptInput): deleteScriptPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
+}
+
+type Product {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  iptype: String!
+  ipprotocol: String!
+  ipallocation: String!
+  threads: String!
+  price: Float!
+  controlpanel: String!
+  number: Int!
+  plansetup: String!
+  link: String
+  productcats(sort: String, limit: Int, start: Int, where: JSON): [Productcat]
+}
+
+type ProductAggregator {
+  count: Int
+}
+
+type Productcat {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: String!
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+}
+
+type ProductcatAggregator {
+  count: Int
+}
+
+type ProductcatConnection {
+  values: [Productcat]
+  groupBy: ProductcatGroupBy
+  aggregate: ProductcatAggregator
+}
+
+type ProductcatConnection_id {
+  key: ID
+  connection: ProductcatConnection
+}
+
+type ProductcatConnectionCategory {
+  key: String
+  connection: ProductcatConnection
+}
+
+type ProductcatConnectionCreatedAt {
+  key: DateTime
+  connection: ProductcatConnection
+}
+
+type ProductcatConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductcatConnection
+}
+
+type ProductcatGroupBy {
+  _id: [ProductcatConnection_id]
+  createdAt: [ProductcatConnectionCreatedAt]
+  updatedAt: [ProductcatConnectionUpdatedAt]
+  category: [ProductcatConnectionCategory]
+}
+
+input ProductcatInput {
+  category: String!
+  products: [ID]
+}
+
+type ProductConnection {
+  values: [Product]
+  groupBy: ProductGroupBy
+  aggregate: ProductAggregator
+}
+
+type ProductConnection_id {
+  key: ID
+  connection: ProductConnection
+}
+
+type ProductConnectionControlpanel {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionCreatedAt {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductConnectionIpallocation {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionIpprotocol {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionIptype {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionLink {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionName {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionNumber {
+  key: Int
+  connection: ProductConnection
+}
+
+type ProductConnectionPlansetup {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionPrice {
+  key: Float
+  connection: ProductConnection
+}
+
+type ProductConnectionThreads {
+  key: String
+  connection: ProductConnection
+}
+
+type ProductConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductConnection
+}
+
+type ProductGroupBy {
+  _id: [ProductConnection_id]
+  createdAt: [ProductConnectionCreatedAt]
+  updatedAt: [ProductConnectionUpdatedAt]
+  name: [ProductConnectionName]
+  iptype: [ProductConnectionIptype]
+  ipprotocol: [ProductConnectionIpprotocol]
+  ipallocation: [ProductConnectionIpallocation]
+  threads: [ProductConnectionThreads]
+  price: [ProductConnectionPrice]
+  controlpanel: [ProductConnectionControlpanel]
+  number: [ProductConnectionNumber]
+  plansetup: [ProductConnectionPlansetup]
+  link: [ProductConnectionLink]
+}
+
+input ProductInput {
+  name: String!
+  iptype: String!
+  ipprotocol: String!
+  ipallocation: String!
+  threads: String!
+  price: Float!
+  controlpanel: String!
+  number: Int!
+  plansetup: String!
+  productcats: [ID]
+  link: String
+}
+
+type Query {
+  article(id: ID!): Article
+  articles(sort: String, limit: Int, start: Int, where: JSON): [Article]
+  articlesConnection(sort: String, limit: Int, start: Int, where: JSON): ArticleConnection
+  cblock(id: ID!): Cblock
+  cblocks(sort: String, limit: Int, start: Int, where: JSON): [Cblock]
+  cblocksConnection(sort: String, limit: Int, start: Int, where: JSON): CblockConnection
+  config(id: ID!): Config
+  configs(sort: String, limit: Int, start: Int, where: JSON): [Config]
+  configsConnection(sort: String, limit: Int, start: Int, where: JSON): ConfigConnection
+  endpoint(id: ID!): Endpoint
+  endpoints(sort: String, limit: Int, start: Int, where: JSON): [Endpoint]
+  endpointsConnection(sort: String, limit: Int, start: Int, where: JSON): EndpointConnection
+  future(id: ID!): Future
+  futures(sort: String, limit: Int, start: Int, where: JSON): [Future]
+  futuresConnection(sort: String, limit: Int, start: Int, where: JSON): FutureConnection
+  ip(id: ID!): Ip
+  ips(sort: String, limit: Int, start: Int, where: JSON): [Ip]
+  ipsConnection(sort: String, limit: Int, start: Int, where: JSON): IpConnection
+  location(id: ID!): Location
+  locations(sort: String, limit: Int, start: Int, where: JSON): [Location]
+  locationsConnection(sort: String, limit: Int, start: Int, where: JSON): LocationConnection
+  machine(id: ID!): Machine
+  machines(sort: String, limit: Int, start: Int, where: JSON): [Machine]
+  machinesConnection(sort: String, limit: Int, start: Int, where: JSON): MachineConnection
+  product(id: ID!): Product
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductConnection
+  productcat(id: ID!): Productcat
+  productcats(sort: String, limit: Int, start: Int, where: JSON): [Productcat]
+  productcatsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductcatConnection
+  script(id: ID!): Script
+  scripts(sort: String, limit: Int, start: Int, where: JSON): [Script]
+  scriptsConnection(sort: String, limit: Int, start: Int, where: JSON): ScriptConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+type Script {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  template: String!
+  endpoint: Endpoint
+}
+
+type ScriptAggregator {
+  count: Int
+}
+
+type ScriptConnection {
+  values: [Script]
+  groupBy: ScriptGroupBy
+  aggregate: ScriptAggregator
+}
+
+type ScriptConnection_id {
+  key: ID
+  connection: ScriptConnection
+}
+
+type ScriptConnectionCreatedAt {
+  key: DateTime
+  connection: ScriptConnection
+}
+
+type ScriptConnectionEndpoint {
+  key: ID
+  connection: ScriptConnection
+}
+
+type ScriptConnectionName {
+  key: String
+  connection: ScriptConnection
+}
+
+type ScriptConnectionTemplate {
+  key: String
+  connection: ScriptConnection
+}
+
+type ScriptConnectionUpdatedAt {
+  key: DateTime
+  connection: ScriptConnection
+}
+
+type ScriptGroupBy {
+  _id: [ScriptConnection_id]
+  createdAt: [ScriptConnectionCreatedAt]
+  updatedAt: [ScriptConnectionUpdatedAt]
+  name: [ScriptConnectionName]
+  template: [ScriptConnectionTemplate]
+  endpoint: [ScriptConnectionEndpoint]
+}
+
+input ScriptInput {
+  name: String!
+  template: String!
+  endpoint: ID
+}
+
+input updateArticleInput {
+  where: InputID
+  data: editArticleInput
+}
+
+type updateArticlePayload {
+  article: Article
+}
+
+input updateCblockInput {
+  where: InputID
+  data: editCblockInput
+}
+
+type updateCblockPayload {
+  cblock: Cblock
+}
+
+input updateConfigInput {
+  where: InputID
+  data: editConfigInput
+}
+
+type updateConfigPayload {
+  config: Config
+}
+
+input updateEndpointInput {
+  where: InputID
+  data: editEndpointInput
+}
+
+type updateEndpointPayload {
+  endpoint: Endpoint
+}
+
+input updateFutureInput {
+  where: InputID
+  data: editFutureInput
+}
+
+type updateFuturePayload {
+  future: Future
+}
+
+input updateIpInput {
+  where: InputID
+  data: editIpInput
+}
+
+type updateIpPayload {
+  ip: Ip
+}
+
+input updateLocationInput {
+  where: InputID
+  data: editLocationInput
+}
+
+type updateLocationPayload {
+  location: Location
+}
+
+input updateMachineInput {
+  where: InputID
+  data: editMachineInput
+}
+
+type updateMachinePayload {
+  machine: Machine
+}
+
+input updateProductcatInput {
+  where: InputID
+  data: editProductcatInput
+}
+
+type updateProductcatPayload {
+  productcat: Productcat
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Product
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateScriptInput {
+  where: InputID
+  data: editScriptInput
+}
+
+type updateScriptPayload {
+  script: Script
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: String!
+  url: String!
+  provider: String!
+  public_id: String
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnection_id {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPublic_id {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSha256 {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  _id: [UploadFileConnection_id]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
+  name: [UploadFileConnectionName]
+  hash: [UploadFileConnectionHash]
+  sha256: [UploadFileConnectionSha256]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  provider: [UploadFileConnectionProvider]
+  public_id: [UploadFileConnectionPublic_id]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  articles: [ID]
+  name: String
+  configs: [ID]
+}
+
+type UsersPermissionsMe {
+  _id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  _id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnection_id {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  _id: [UsersPermissionsRoleConnection_id]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  _id: ID!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  name: String
+  articles(sort: String, limit: Int, start: Int, where: JSON): [Article]
+  configs(sort: String, limit: Int, start: Int, where: JSON): [Config]
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnection_id {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionName {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  _id: [UsersPermissionsUserConnection_id]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  name: [UsersPermissionsUserConnectionName]
+}

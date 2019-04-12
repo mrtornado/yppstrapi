@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "location",
+  "info": {
+    "name": "location",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "city": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "cblock": {
+      "model": "cblock",
+      "via": "location"
+    },
+    "configs": {
+      "collection": "config",
+      "via": "locations"
+    }
+  }
+}
